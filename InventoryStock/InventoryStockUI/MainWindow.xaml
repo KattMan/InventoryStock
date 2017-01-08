@@ -2,20 +2,20 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:Models="clr-namespace:InventoryStockUI.Models" x:Class="InventoryStockUI.MainWindow"
-        Title="Inventory Stock" Height="350" Width="525"
+        Title="Inventory Stock" Height="401" Width="525"
         Closing="DataWindow_Closing">
     <Grid>
         <TabControl SelectionChanged="TabControl_SelectionChanged">
             <TabItem x:Name="tabHome">
                 <TabItem.Header>
-                    <Label Content="Home"/>
+                    <Label Content="Home" FontSize="20"/>
                 </TabItem.Header>
-                <Grid>
+                <Grid Margin="0,0,0,2">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
-                    <Label Grid.Row="0" Content="Helen's Inventory Value" FontFamily="Harrington" FontSize="20" FontWeight="Bold"/>
+                    <Label Grid.Row="0" Content="Helen's Inventory Value" FontFamily="Harrington" FontSize="36" FontWeight="Bold"/>
                     <Grid Grid.Row="1">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto"/>
@@ -24,22 +24,23 @@
                             <RowDefinition Height="Auto"/>
                             <RowDefinition Height="Auto"/>
                         </Grid.RowDefinitions>
-                        <Label Grid.Row="0" Content="Stock Value" Height="25"/>
-                        <TextBox Grid.Row="0" IsReadOnly="True"  x:Name="txtbox_StockValue" Height="25" Width="135" Margin="110,10,0,11" HorizontalAlignment="Left" />
-                        <Label Grid.Row="1" Content="Past Sales" Height="25"/>
-                        <TextBox Grid.Row="1" IsReadOnly="True"  x:Name="txtbox_PastSales" Height="25" Width="135" Margin="110,10,0,11" HorizontalAlignment="Left" />
-                        <Label Grid.Row="2" Content="Expenses" Height="25"/>
-                        <TextBox Grid.Row="2" IsReadOnly="True"  x:Name="txtbox_Expenses" Height="25" Width="135" Margin="110,10,0,11" HorizontalAlignment="Left" />
-                        <Label Grid.Row="3" Content="Stock Cost" Height="25"/>
-                        <TextBox Grid.Row="3" IsReadOnly="True"  x:Name="txtbox_StockCost" Height="25" Width="135" Margin="110,10,0,11" HorizontalAlignment="Left" />
-                        <Label Grid.Row="4" Content="Profit" Height="25"/>
-                        <TextBox Grid.Row="4" IsReadOnly="True"  x:Name="txtbox_Profit" Height="25" Width="135" Margin="110,10,0,11" HorizontalAlignment="Left" />
+                        <Label Grid.Row="0" Content="Stock Value" Height="45" FontSize="20"/>
+                        <TextBox Grid.Row="0" IsReadOnly="True"  x:Name="txtbox_StockValue" Height="25" Width="135" Margin="110,10,0,11" HorizontalAlignment="Left" FontSize="20" />
+                        <Button Grid.Row="0" Content="Backup"  FontSize="20" Margin="345,12,82,13" Click="Backup_Click"/>
+                        <Label Content="Past Sales" Height="45" FontSize="20" Margin="0,51,0,7" Grid.RowSpan="2"/>
+                        <TextBox Grid.Row="1" IsReadOnly="True"  x:Name="txtbox_PastSales" Height="25" Width="135" Margin="110,10,0,11" HorizontalAlignment="Left" FontSize="20" />
+                        <Label Grid.Row="2" Content="Expenses" Height="45" FontSize="20"/>
+                        <TextBox Grid.Row="2" IsReadOnly="True"  x:Name="txtbox_Expenses" Height="25" Width="135" Margin="110,10,0,11" HorizontalAlignment="Left" FontSize="20" />
+                        <Label Grid.Row="3" Content="Stock Cost" Height="45" FontSize="20"/>
+                        <TextBox Grid.Row="3" IsReadOnly="True"  x:Name="txtbox_StockCost" Height="25" Width="135" Margin="110,10,0,11" HorizontalAlignment="Left" FontSize="20" />
+                        <Label Grid.Row="4" Content="Profit" Height="45" FontSize="20"/>
+                        <TextBox Grid.Row="4" IsReadOnly="True"  x:Name="txtbox_Profit" Height="25" Width="135" Margin="110,10,0,11" HorizontalAlignment="Left" FontSize="20" />
                     </Grid>
                 </Grid>
             </TabItem>
             <TabItem x:Name="tabInventory">
                 <TabItem.Header>
-                    <Label Content="Inventory"/>
+                    <Label Content="Inventory" FontSize="20"/>
                 </TabItem.Header>
                 <ScrollViewer>
                     <DataGrid x:Name="InventoryGrid" AutoGeneratingColumn="OnAutoGeneratingColumn" AlternatingRowBackground="Gainsboro" CanUserReorderColumns="False" CanUserResizeColumns="True" 
@@ -49,7 +50,7 @@
             </TabItem>
             <TabItem x:Name="tabExpenses">
                 <TabItem.Header>
-                    <Label Content="Expenses"/>
+                    <Label Content="Expenses" FontSize="20"/>
                 </TabItem.Header>
                 <ScrollViewer>
                     <DataGrid x:Name="ExpensesGrid" AutoGeneratingColumn="OnAutoGeneratingColumn" AlternatingRowBackground="Gainsboro" CanUserReorderColumns="False" CanUserResizeColumns="True" 

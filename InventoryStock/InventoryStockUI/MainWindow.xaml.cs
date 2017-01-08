@@ -15,6 +15,7 @@ using System.Windows.Shapes;
 using System.ComponentModel;
 using InventoryStockUI.DataAccess;
 using InventoryStockUI.Models;
+using System.Configuration;
 
 namespace InventoryStockUI
 {
@@ -74,6 +75,24 @@ namespace InventoryStockUI
                 (e.Column as DataGridTextColumn).Binding.StringFormat = "d";
             if (e.PropertyType == typeof(System.Decimal))
                 (e.Column as DataGridTextColumn).Binding.StringFormat = "C";
+        }
+
+        private void Backup_Click(object sender, RoutedEventArgs e)
+        {
+            string backuplocation = ConfigurationManager.AppSettings["backuplocation"];
+
+            var dataReader = new DataReader();
+
+            try
+            {
+                dataReader.SaveData(_dataContainer);
+                dataReader.BackupData(backuplocation);
+                MessageBox.Show("File backed up.");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }

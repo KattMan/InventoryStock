@@ -16,8 +16,7 @@ namespace InventoryStockUI.DataAccess
 
         public DataContainer ReadData()
         {
-            var currentDir = Path.GetDirectoryName(System.AppDomain.CurrentDomain.BaseDirectory);
-            var fullName = Path.Combine(currentDir, FileName);
+            var fullName = GetFullFIleName();
 
             if (!System.IO.File.Exists(fullName))
             {
@@ -39,8 +38,7 @@ namespace InventoryStockUI.DataAccess
 
         public bool SaveData(DataContainer data)
         {
-            var currentDir = Path.GetDirectoryName(System.AppDomain.CurrentDomain.BaseDirectory);
-            var fullName = Path.Combine(currentDir, FileName);
+            var fullName = GetFullFIleName();
 
             using (StreamWriter sw = new StreamWriter(fullName))
             {
@@ -49,6 +47,24 @@ namespace InventoryStockUI.DataAccess
 
                 return true;
             }
+        }
+
+        public bool BackupData(string backupLocation)
+        {
+            var fullName = GetFullFIleName();
+
+            var backupfilename = string.Format("InventoryData{0}{1}{2}-{3}{4}.XML", DateTime.Now.Year.ToString("D4"), DateTime.Now.Month.ToString("D2"), DateTime.Now.Day.ToString("D2"), DateTime.Now.Hour.ToString("D2"), DateTime.Now.Minute.ToString("D2"));
+            var backupfullName = Path.Combine(backupLocation, backupfilename);
+
+            File.Copy(fullName, backupfullName);
+
+            return true;
+        }
+
+        private string GetFullFIleName()
+        {
+            var currentDir = Path.GetDirectoryName(System.AppDomain.CurrentDomain.BaseDirectory);
+            return Path.Combine(currentDir, FileName);
         }
 
     }
